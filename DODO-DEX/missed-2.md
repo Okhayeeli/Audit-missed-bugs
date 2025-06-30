@@ -2,10 +2,10 @@ Issue #928
 Submitted on June 9, 2025 at 3:59:33 PM GMT+1
 
 Boolean Return Assumption in transferFrom() Causes Token Compatibility Issues
-Summary
+## Summary
 The GatewaySend contract incorrectly uses raw IERC20.transferFrom() calls wrapped in require() statements, expecting a boolean return value from all ERC20 tokens. However, tokens like USDT, which have a void return type, cause these calls to fail even when the transfer succeeds, as Solidity interprets the missing return as false. This makes the contract incompatible with major non-standard tokens, despite importing TransferHelper for safe transfers, which is not consistently applied.
 
-Root Cause
+## Root Cause
 https://github.com/sherlock-audit/2025-05-dodo-cross-chain-dex/blob/main/omni-chain-contracts/contracts/GatewaySend.sol#L232C1-L242C10
 
 Internal Pre-conditions
